@@ -2,7 +2,7 @@ package com.kotlin1.spring.domain.entity
 
 import com.kotlin1.spring.domain.enumerate.ItemType
 import jakarta.persistence.*
-
+@Entity(name = "items")
 class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +21,6 @@ class Item {
     val content: String = "empty"
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val providerId: Long = 0L
+    @JoinColumn(name = "provider_id")
+    var provider: Provider? = null
 }

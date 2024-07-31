@@ -2,7 +2,7 @@ package com.kotlin1.spring.domain.entity
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
-
+@Entity(name = "order_items")
 class OrderItem{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,8 +12,10 @@ class OrderItem{
     val count: Long = 0L
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val orderId: Long = 0L
+    @JoinColumn(name = "order_id")
+    var order: Order? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val itemId: Long = 0L
+    @JoinColumn(name = "item_id")
+    var item: Item? = null
 }

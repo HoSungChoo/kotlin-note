@@ -5,7 +5,7 @@ import com.kotlin1.spring.domain.enumerate.State
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
-@Entity
+@Entity(name = "users")
 class User(){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
