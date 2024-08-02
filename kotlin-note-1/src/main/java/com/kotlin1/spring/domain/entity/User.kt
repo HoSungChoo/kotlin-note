@@ -9,44 +9,29 @@ import java.time.LocalDateTime
 
 @AllOpen
 @Entity(name = "users")
-open class User {
+class User (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val userId: Long = 0L
+    val userId: Long?,
 
     @Column(nullable = false)
-    val email: String = "empty"
+    val email: String,
 
     @Column(nullable = false)
-    open val birth: LocalDateTime = LocalDateTime.now()
+    val birth: LocalDateTime,
 
     @Column(nullable = false)
-    val gender: Gender = Gender.M
+    val gender: Gender,
 
     @Column(nullable = false)
-    val city: String = "empty"
+    val city: String,
 
     @Column(nullable = false)
-    val street: String = "empty"
+    val street: String,
 
     @Column(nullable = false)
-    val zipcode: String = "empty"
+    val zipcode: String,
 
     @Column(nullable = false)
-    val state: State = State.U
-
-    companion object Mapper {
-        fun toReadUserOutDTO(user: User): ReadUserOutDTO {
-            return ReadUserOutDTO(
-                userId = user.userId,
-                email = user.email,
-                birth = user.birth,
-                gender = user.gender,
-                city = user.city,
-                street = user.street,
-                zipcode = user.zipcode,
-                state = user.state
-            )
-        }
-    }
-}
+    val state: State
+)
