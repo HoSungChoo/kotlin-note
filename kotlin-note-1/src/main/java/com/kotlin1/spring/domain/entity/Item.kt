@@ -22,5 +22,5 @@ class Item {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "provider_id")
-    var provider: Provider? = null
+    val provider: Provider? = null
 }

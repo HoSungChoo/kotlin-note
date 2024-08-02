@@ -13,5 +13,5 @@ class Order{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    var user: User? = null
+    val user: User? = null
 }

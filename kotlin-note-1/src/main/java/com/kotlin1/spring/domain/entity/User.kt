@@ -1,12 +1,15 @@
 package com.kotlin1.spring.domain.entity
 
+import com.kotlin1.spring.domain.dto.ReadUserOutDTO
 import com.kotlin1.spring.domain.enumerate.Gender
 import com.kotlin1.spring.domain.enumerate.State
+import com.kotlin1.spring.global.annotation.AllOpen
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
+@AllOpen
 @Entity(name = "users")
-class User(){
+open class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val userId: Long = 0L
@@ -15,7 +18,7 @@ class User(){
     val email: String = "empty"
 
     @Column(nullable = false)
-    val birth: LocalDateTime = LocalDateTime.now()
+    open val birth: LocalDateTime = LocalDateTime.now()
 
     @Column(nullable = false)
     val gender: Gender = Gender.M
@@ -31,4 +34,19 @@ class User(){
 
     @Column(nullable = false)
     val state: State = State.U
+
+    companion object Mapper {
+        fun toReadUserOutDTO(user: User): ReadUserOutDTO {
+            return ReadUserOutDTO(
+                userId = user.userId,
+                email = user.email,
+                birth = user.birth,
+                gender = user.gender,
+                city = user.city,
+                street = user.street,
+                zipcode = user.zipcode,
+                state = user.state
+            )
+        }
+    }
 }

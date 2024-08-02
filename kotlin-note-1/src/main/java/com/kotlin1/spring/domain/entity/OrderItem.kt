@@ -13,9 +13,9 @@ class OrderItem{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    var order: Order? = null
+    val order: Order? = null
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
-    var item: Item? = null
+    val item: Item? = null
 }
