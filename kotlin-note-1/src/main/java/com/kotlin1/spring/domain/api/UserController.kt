@@ -12,15 +12,19 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/user")
+@ResponseBody
 class UserController(private val userService: UserService){
-    @GetMapping("/{userId}")
-    fun readUser(@PathVariable userId: Long) : ResponseEntity<ReadUserOutDTO>{
-        return ResponseEntity.status(HttpStatus.OK).body(userService.readUser(userId))
+    @GetMapping()
+    fun readUser(@RequestParam id: Long) : ResponseEntity<ReadUserOutDTO>{
+        return ResponseEntity.status(HttpStatus.OK).body(userService.readUser(id))
     }
+
     @PostMapping()
     fun createUser(@RequestBody createUserInDTO: CreateUserInDTO): ResponseEntity<CreateUserOutDTO>{
         return ResponseEntity.status(HttpStatus.OK).body(userService.createUser(createUserInDTO))

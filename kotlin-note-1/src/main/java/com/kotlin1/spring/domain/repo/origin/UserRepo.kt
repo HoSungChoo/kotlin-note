@@ -1,4 +1,4 @@
-package com.kotlin1.spring.domain.repo
+package com.kotlin1.spring.domain.repo.origin
 
 import com.kotlin1.spring.domain.entity.User
 import org.springframework.data.jpa.repository.JpaRepository
