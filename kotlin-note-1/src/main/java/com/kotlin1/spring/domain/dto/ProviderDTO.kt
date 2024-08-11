@@ -30,6 +30,19 @@ class ProviderDTO {
             }
         }
     }
+    data class ReadProviderSortByCountOutDTO(
+        val providerId: Long,
+        val email: String,
+        val birth: LocalDate,
+        val gender: Gender,
+        val city: String,
+        val street: String,
+        val zipcode: String,
+        val state: State,
+        val count: Long
+    )
+
+    data class ReadProviderSortByCountOutDTOS(val providers: List<ReadProviderSortByCountOutDTO>)
 
     data class CreateProviderInDTO(
         val providerId: Long,
@@ -40,9 +53,7 @@ class ProviderDTO {
         val street: String,
         val zipcode: String,
         val state: State,
-    ){
-
-    }
+    )
 
     data class CreateProviderOutDTO(
         val providerId: Long,

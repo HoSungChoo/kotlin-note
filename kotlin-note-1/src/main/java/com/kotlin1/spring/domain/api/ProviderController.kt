@@ -19,6 +19,10 @@ class ProviderController(private val providerService: ProviderService) {
         return ResponseEntity.status(HttpStatus.OK).body(providerService.readProviderById(id))
     }
 
+    @GetMapping("/sort")
+    fun readProviderSortByCount(): ResponseEntity<ProviderDTO.ReadProviderSortByCountOutDTOS>{
+        return ResponseEntity.status(HttpStatus.OK).body(providerService.readProviderSortByCount())
+    }
     @PostMapping()
     fun createProvider(@RequestBody createProviderInDTO: ProviderDTO.CreateProviderInDTO):
             ResponseEntity<ProviderDTO.CreateProviderOutDTO> {

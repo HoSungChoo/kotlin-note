@@ -3,6 +3,7 @@ package com.kotlin1.spring.domain.api
 import com.kotlin1.spring.domain.dto.CreateUserInDTO
 import com.kotlin1.spring.domain.dto.CreateUserOutDTO
 import com.kotlin1.spring.domain.dto.ReadUserOutDTO
+import com.kotlin1.spring.domain.dto.ReadUserOutDTOS
 import com.kotlin1.spring.domain.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode
@@ -28,6 +29,10 @@ class UserController(private val userService: UserService){
     @PostMapping()
     fun createUser(@RequestBody createUserInDTO: CreateUserInDTO): ResponseEntity<CreateUserOutDTO>{
         return ResponseEntity.status(HttpStatus.OK).body(userService.createUser(createUserInDTO))
+    }
+    @GetMapping("/prov")
+    fun readUserUsingProvider(@RequestParam id: Long): ResponseEntity<ReadUserOutDTOS>{
+        return ResponseEntity.status(HttpStatus.OK).body(userService.readUserUsingProvider(id))
     }
 }
 

@@ -13,12 +13,22 @@ data class ReadUserOutDTO(
     companion object Mapper {
         fun toDTO(user: User): ReadUserOutDTO {
             return ReadUserOutDTO(
-                userId = user.userId, email = user.email, birth = user.birth, gender = user.gender,
-                city = user.city, street = user.street, zipcode = user.zipcode, state = user.state
+                userId = user.userId,
+                email = user.email,
+                birth = user.birth,
+                gender = user.gender,
+                city = user.city,
+                street = user.street,
+                zipcode = user.zipcode,
+                state = user.state
             )
         }
     }
 }
+
+data class ReadUserOutDTOS(
+    val users: List<ReadUserOutDTO>
+)
 
 data class CreateUserInDTO(
     val userId: Long,
